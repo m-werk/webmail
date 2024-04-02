@@ -68,7 +68,7 @@ $GLOBALS['TL_DCA']['tl_webmail'] = array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_webmail']['toggle'],
 				'icon'                => 'visible.svg',
 				'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
-				'button_callback'     => array('Webmail\ContaoWebmail\classes\DcaWebmail', 'toggleIcon')
+				'button_callback'     => array('Webmail\ContaoWebmail\DcaWebmail', 'toggleIcon')
 			),
             'show'   => array(
                 'href'       => 'act=show',
