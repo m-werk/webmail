@@ -5,14 +5,14 @@ declare(strict_types=1);
 /*
  * This file is part of Webmail.
  *
- * (c) Andreas Steinkellner 2024 <andreas.steinkellner@privatconsult.com>
+ * (c) Andreas Steinkellner 2024 <a-steinkellner@outlook.com>
  * @license LGPL-3.0-or-later
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/webmail/contao-webmail
+ * @link https://github.com/m-werk/webmail
  */
 
-namespace Webmail\ContaoWebmail\ContaoManager;
+namespace MWerk\Webmail\ContaoManager;
 
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
@@ -23,7 +23,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create('Webmail\ContaoWebmail\WebmailContaoWebmail')
+            BundleConfig::create('MWerk\Webmail\MWerkWebmail')
                 ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle']),
         ];
     }

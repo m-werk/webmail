@@ -1,5 +1,5 @@
 {
-    "name": "webmail/contao-webmail",
+    "name": "m-werk/webmail",
     "description": "Verwaltung von E-Mail-Aussendungen",
     "keywords": [
         "contao",
@@ -12,14 +12,14 @@
     "authors": [
         {
             "name": "Andreas Steinkellner",
-            "email": "andreas.steinkellner@privatconsult.com",
-            "homepage": "https://github.com",
+            "email": "a-steinkellner@outlook.com",
+            "homepage": "https://github.com/m-werk/webmail",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/webmail/contao-webmail/issues",
-        "source": "https://github.com/webmail/contao-webmail"
+        "issues": "https://github.com/m-werk/webmail/issues",
+        "source": "https://github.com/m-werk/webmail"
     },
     "require": {
         "php": "^8.1",
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Webmail\\ContaoWebmail\\": "src/"
+            "MWerk\\Webmail\\": "src/"
         },
 		"classmap": [
 			"contao/"
@@ -50,7 +50,7 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "Webmail\\ContaoWebmail\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "MWerk\\Webmail\\ContaoManager\\Plugin"
     },
     "scripts": {
         "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ templates/ tests/ --config tools/ecs/config.php --fix --ansi",

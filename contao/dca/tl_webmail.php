@@ -5,11 +5,11 @@ declare(strict_types=1);
 /*
  * This file is part of Webmail.
  *
- * (c) Andreas Steinkellner 2024 <andreas.steinkellner@privatconsult.com>
+ * (c) Andreas Steinkellner 2024 <a-steinkellner@outlook.com>
  * @license LGPL-3.0-or-later
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/webmail/contao-webmail
+ * @link https://github.com/m-werk/webmail
  */
 
 use Contao\Backend;
@@ -68,7 +68,7 @@ $GLOBALS['TL_DCA']['tl_webmail'] = array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_webmail']['toggle'],
 				'icon'                => 'visible.svg',
 				'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
-				'button_callback'     => array('Webmail\ContaoWebmail\DcaWebmail', 'toggleIcon')
+				'button_callback'     => array('MWerk\Webmail\Classes\DcaWebmail', 'toggleIcon')
 			),
             'show'   => array(
                 'href'       => 'act=show',

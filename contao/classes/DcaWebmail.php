@@ -3,14 +3,14 @@
 /*
  * This file is part of Webmail.
  *
- * (c) Andreas Steinkellner 2024 <andreas.steinkellner@privatconsult.com>
+ * (c) Andreas Steinkellner 2024 <a-steinkellner@outlook.com>
  * @license LGPL-3.0-or-later
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/webmail/contao-webmail
+ * @link https://github.com/m-werk/webmail
  */
 
-namespace Webmail\ContaoWebmail;
+namespace MWerk\Webmail\Classes;
 
 use Contao\Backend;
 use Contao\BackendUser;
@@ -19,8 +19,6 @@ use Contao\Database;
 use Contao\Image;
 use Contao\Input;
 use Contao\StringUtil;
-//use Contao\System;
-// use Psr\Log\LogLevel;
 
 /**
  * DCA Helper Class DcaVisitors
