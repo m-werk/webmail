@@ -21,6 +21,9 @@ use Contao\BackendTemplate;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\StringUtil;
 use Contao\FrontendTemplate;
+use Contao\Input;
+use Contao\Pagination;
+use Contao\Config;
 use MWerk\Webmail\Model\WebmailModel;
 
 class ModuleWebmailList extends Module
@@ -29,7 +32,7 @@ class ModuleWebmailList extends Module
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mod_webmail_list_all';
+	protected $strTemplate = 'webmail_list';
 
 	public function generate()
     {
@@ -52,9 +55,7 @@ class ModuleWebmailList extends Module
 	 * Compile the current element
 	 */
 	protected function compile()
-	{
-		global $objPage;
-		
+	{	
 		System::loadLanguageFile('tl_webmail');
 				
 		$webmailCount = WebmailModel::findAll();
@@ -69,7 +70,7 @@ class ModuleWebmailList extends Module
 		$offset = 0;
 				
 		// Pagination
-	    if ($this->perPage > 0)
+		if ($this->perPage > 0)
 	    {
         	$id = 'page_e' . $this->id;
         	$page = Input::get($id) ?? 1;
@@ -85,7 +86,7 @@ class ModuleWebmailList extends Module
         	$objPagination = new Pagination($total, $this->perPage, Config::get('maxPaginationLinks'), $id);
         	$this->Template->pagination = $objPagination->generate("\n  ");
         }
-
+		
 		/**
 		 * Abfragen der Tabelle
 		 **/
@@ -113,7 +114,7 @@ class ModuleWebmailList extends Module
 			$this->Template = new FrontendTemplate($this->strTemplate);
 		}
 		$this->Template->title = StringUtil::specialchars($GLOBALS['TL_LANG']['tl_webmail']['header_title']);
-		$this->Template->date = StringUtil::specialchars($GLOBALS['TL_LANG']['tl_webmail']['header_date']);
+		$this->Template->datum = StringUtil::specialchars($GLOBALS['TL_LANG']['tl_webmail']['header_date']);
 		$this->Template->webmails = $webmails;
 		
 	}
