@@ -55,22 +55,36 @@ class ModuleWebmailList extends Module
 	 * Compile the current element
 	 */
 	protected function compile()
-	{	
+	{
 		System::loadLanguageFile('tl_webmail');
 				
-		$webmailCount = WebmailModel::findAll();
-		$rows = array();	
-		while($webmailCount->next())
+		if (($this->webmail_template != $this->strTemplate) && ($this->webmail_template != ''))
+		{
+			$this->strTemplate = $this->webmail_template;
+			$this->Template = new FrontendTemplate($this->strTemplate);
+		}
+				
+		//Gesamtergebnis für Pagination
+		if ($this->strTemplate == 'mod_webmail_list_compliance')
+		{
+			$compliance = 1;
+			$webmailCount = WebmailModel::findBy('compliance', 1);
+		
+		} else {
+			$compliance = 0;
+			$webmailCount = WebmailModel::findBy('alle', 1);
+		}
+		while ($webmailCount->next())
 		{
 			$rows[] = $webmailCount->row();
 		}
-		
+						 		
 		$total = \count($rows);
 		$limit = $total;
-		$offset = 0;
-				
+		$offset = 0;	
+						
 		// Pagination
-		if ($this->perPage > 0)
+	    if ($this->perPage > 0)
 	    {
         	$id = 'page_e' . $this->id;
         	$page = Input::get($id) ?? 1;
@@ -86,17 +100,14 @@ class ModuleWebmailList extends Module
         	$objPagination = new Pagination($total, $this->perPage, Config::get('maxPaginationLinks'), $id);
         	$this->Template->pagination = $objPagination->generate("\n  ");
         }
-		
-		/**
-		 * Abfragen der Tabelle
-		 **/
+			
+		//Abfrage der Tabelle
 		$webmails = array();
-
-        $result = WebmailModel::findAllByPublished($offset, (int)$this->perPage);
-				
+		
+		$result = WebmailModel::findAllByPublished($offset, (int)$this->perPage, $compliance);
+		
 		while ($result->next())
 		{		
-			
 			$webmails[] = array
 			(
 				'title' => StringUtil::specialchars($result->title),
@@ -106,17 +117,10 @@ class ModuleWebmailList extends Module
 				'date'	=> $result->date
 			);
 		}
-				
+		
 		//Template
-		if (($this->webmail_template != $this->strTemplate) && ($this->webmail_template != ''))
-		{
-			$this->strTemplate = $this->webmail_template;
-			$this->Template = new FrontendTemplate($this->strTemplate);
-		}
 		$this->Template->title = StringUtil::specialchars($GLOBALS['TL_LANG']['tl_webmail']['header_title']);
 		$this->Template->datum = StringUtil::specialchars($GLOBALS['TL_LANG']['tl_webmail']['header_date']);
 		$this->Template->webmails = $webmails;
-		
 	}
 }
-
