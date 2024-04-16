@@ -20,10 +20,15 @@ class WebmailModel extends Model
 {
     protected static $strTable = 'tl_webmail';
 	
-	public static function findAllByPublished($offset, $limit)
-	{
+	public static function findAllByPublished($offset, $limit, $compliance)
+	{	
 		$t = static::$strTable;
-		$arrColumns = array("$t.published=?");
+		if ($compliance != 0)
+		{	
+			$arrColumns = array("$t.published=? AND $t.compliance=$compliance");
+		} else {
+			$arrColumns = array("$t.published=?");
+		}
 		$arrOptions = array('order' => "$t.date desc", 'offset' => $offset, 'limit' => $limit);
 
 		return static::findBy($arrColumns, 1, $arrOptions);
