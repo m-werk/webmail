@@ -5,16 +5,14 @@
     <ul class="header">
 		<li class="header_date"><?= $this->datum; ?></li>
 		<li class="header_title"><?= $this->title; ?></li>
-    </ul>
-	<?= $this->text; ?>
-    <?php foreach ($this->webmails as $webmail): ?>
-		<?php if($webmail['compliance'] == 1) { ?>
+    </ul>	
+	<?php foreach ($this->webmails as $webmail): ?>
 			<ul class="result">
 				<li class="date"><?= date($GLOBALS['TL_CONFIG']['dateFormat'], $webmail['date']); ?></li>
 				<li class="link"><a href="<?= $webmail['url']; ?>" title="<?= $webmail['title']; ?>" target="_blank"><?= $webmail['title']; ?></a></li> 
-			</ul> 
-		<?php } ?>
+			</ul>					
+	<?php endforeach; ?>
 
-    <?php endforeach; ?>
+	<?= $this->pagination ?>
 
 <?php $this->endblock(); ?>
