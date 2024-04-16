@@ -1,2 +1,2 @@
-# Welcome to Webmail
+# Welcome to Webmail Administration
 This bundle is still under construction.
