@@ -1,20 +1,12 @@
 {
     "name": "m-werk/webmail",
     "description": "Verwaltung von E-Mail-Aussendungen",
-    "keywords": [
-        "contao",
-        "bundle",
-        "tag 3",
-        "tag 4"
-    ],
     "type": "contao-bundle",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Andreas Steinkellner",
-            "email": "a-steinkellner@outlook.com",
-            "homepage": "https://github.com/m-werk/webmail",
-            "role": "Developer"
+            "homepage": "https://github.com/m-werk/webmail"
         }
     ],
     "support": {
@@ -55,6 +47,5 @@
     "scripts": {
         "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ templates/ tests/ --config tools/ecs/config.php --fix --ansi",
         "unit-tests": "@php tools/phpunit/vendor/bin/phpunit -c tools/phpunit/phpunit.xml.dist"
-    },
-    "version": "1.0"
+    }
 }
